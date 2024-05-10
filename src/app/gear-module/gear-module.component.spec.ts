@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutPageComponent } from './about-page.component';
+import { GearModuleComponent } from './gear-module.component';
 
-describe('AboutPageComponent', () => {
-  let component: AboutPageComponent;
-  let fixture: ComponentFixture<AboutPageComponent>;
+describe('GearModuleComponent', () => {
+  let component: GearModuleComponent;
+  let fixture: ComponentFixture<GearModuleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutPageComponent]
+      imports: [GearModuleComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AboutPageComponent);
+    fixture = TestBed.createComponent(GearModuleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
