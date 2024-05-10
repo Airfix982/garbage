@@ -1,0 +1,76 @@
+<div class="container mt-4">
+    <div class="mb-3">
+        <h2>Gear box</h2>
+        <form #form="ngForm">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="relaeseBearing" class="form-label">Relaese bearing</label>
+                    <input type="text" class="form-control" id="relaeseBearing" [(ngModel)]="newGear.relaeseBearing" #relaeseBearing="ngModel"
+                        name="relaeseBearing" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="driven_disc" class="form-label">Driven disc</label>
+                    <input type="text" class="form-control" id="driven_disc" [(ngModel)]="newGear.driven_disc" #driven_disc="ngModel"
+                        name="driven_disc" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="clutch_basket" class="form-label">Clutch basket</label>
+                    <input type="text" class="form-control" id="clutch_basket" [(ngModel)]="newGear.clutch_basket" #clutch_basket="ngModel"
+                        name="clutch_basket" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="input_shaft" class="form-label">Input shaft</label>
+                    <input type="text" class="form-control" id="input_shaft" [(ngModel)]="newGear.input_shaft" #input_shaft="ngModel"
+                        name="input_shaft" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="shift_fork" class="form-label">Shift fork</label>
+                    <input type="text" class="form-control" id="shift_fork" [(ngModel)]="newGear.shift_fork" #shift_fork="ngModel"
+                        name="shift_fork" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary mt-3" [disabled]="form.invalid" (click)="addgear()">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <div *ngIf="gears.length > 0">
+        <h3>gears List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-wrap" style="width: 18%;">Relaese bearing</th>
+                    <th class="text-wrap" style="width: 18%;">Driven disc</th>
+                    <th class="text-wrap" style="width: 18%;">Clutch basket</th>
+                    <th class="text-wrap" style="width: 18%;">Input shaft</th>
+                    <th class="text-wrap" style="width: 18%;">Shift fork</th>
+                    <th style="width: 10%;">Changed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gear of gears">
+                    <td>
+                        <input type="text" [(ngModel)]="gear.relaeseBearing" class="form-control"/>
+                        <button class="btn btn-secondary btn-sm mt-1" (click)="updategear(gear.id, gear.relaeseBearing, gear.driven_disc, gear.clutch_basket, gear.input_shaft, gear.shift_fork)">Save</button>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="gear.driven_disc" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="gear.clutch_basket" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="gear.input_shaft" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="gear.shift_fork" class="form-control"/>
+                    </td>
+                    <td>{{ gear.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
