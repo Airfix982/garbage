@@ -1,0 +1,76 @@
+<div class="container mt-4">
+    <div class="mb-3">
+        <h2>Engine</h2>
+        <form #form="ngForm">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="power" class="form-label">Power</label>
+                    <input type="text" class="form-control" id="power" [(ngModel)]="newEngine.power" #power="ngModel"
+                        name="power" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="max_engine_speed" class="form-label">Max. engine speed</label>
+                    <input type="text" class="form-control" id="max_engine_speed" [(ngModel)]="newEngine.max_engine_speed" #max_engine_speed="ngModel"
+                        name="max_engine_speed" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="emission_standart" class="form-label">Emission standart</label>
+                    <input type="text" class="form-control" id="emission_standart" [(ngModel)]="newEngine.emission_standart" #emission_standart="ngModel"
+                        name="emission_standart" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="stroke" class="form-label">Stroke</label>
+                    <input type="text" class="form-control" id="stroke" [(ngModel)]="newEngine.stroke" #stroke="ngModel"
+                        name="stroke" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="boost_pressure" class="form-label">Boost pressure</label>
+                    <input type="text" class="form-control" id="boost_pressure" [(ngModel)]="newEngine.boost_pressure" #boost_pressure="ngModel"
+                        name="boost_pressure" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary mt-3" [disabled]="form.invalid" (click)="addEngine()">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <div *ngIf="engines.length > 0">
+        <h3>Engines List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-wrap" style="width: 18%;">Power</th>
+                    <th class="text-wrap" style="width: 18%;">Max. engine speed</th>
+                    <th class="text-wrap" style="width: 18%;">Emission standart</th>
+                    <th class="text-wrap" style="width: 18%;">Stroke</th>
+                    <th class="text-wrap" style="width: 18%;">Boost pressure</th>
+                    <th style="width: 10%;">Changed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let engine of engines">
+                    <td>
+                        <input type="text" [(ngModel)]="engine.power" class="form-control"/>
+                        <button class="btn btn-secondary btn-sm mt-1" (click)="updateEngine(engine.id, engine.power, engine.max_engine_speed, engine.emission_standart, engine.stroke, engine.boost_pressure)">Save</button>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="engine.max_engine_speed" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="engine.emission_standart" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="engine.stroke" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="engine.boost_pressure" class="form-control"/>
+                    </td>
+                    <td>{{ engine.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

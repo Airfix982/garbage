@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="brand">Марка машины</label>
+            <input type="text" id="brand" class="form-control" formControlName="brand">
+          </div>
+          <div class="form-group">
+            <label for="model">Модель машины</label>
+            <input type="text" id="model" class="form-control" formControlName="model">
+          </div>
+          <div class="form-group">
+            <label for="coolness">Крутость</label>
+            <select id="coolness" class="form-control" formControlName="coolness">
+              <option value="">Выберите...</option>
+              <option value="Seriously uncool">Seriously uncool</option>
+              <option value="Uncool">Uncool</option>
+              <option value="Cool">Cool</option>
+              <option value="Subzero">Sub Zero</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="carForm.invalid">Добавить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
