@@ -19,11 +19,7 @@ export class NavbarComponent {
     this.router.navigate(['/']);
   }
 
-  navigateToCarsPage() {
-    this.router.navigate(['/cars']);
-  }
-
-  navigateToUserPage(userName: string) {
-    this.router.navigate(['/user', userName]);
+  navigateToFuelPage() {
+    this.router.navigate(['/fuel']);
   }
 }

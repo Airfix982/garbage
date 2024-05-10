@@ -2,18 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
-interface gear {
+interface Fuel {
   id: number;
-  relaeseBearing: string;
-  driven_disc: string;
-  clutch_basket: string;
-  input_shaft: string;
-  shift_fork: string;
+  air_cleaner: string;
+  throttle_sensor: string;
+  fuel_injectors: string;
+  fuel_pump: string;
+  fuel_filter: string;
   createdDate: Date;
 }
 
 @Component({
-  selector: 'app-gear-module',
+  selector: 'app-fuel-module',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './fuel-module.component.html',
@@ -22,39 +22,39 @@ interface gear {
 export class FuelModuleComponent {
   @ViewChild('form')
   form!: NgForm;
-  gears: gear[] = [];
+  fuels: Fuel[] = [];
 
-  newGear = {
-    relaeseBearing: '',
-    driven_disc: '',
-    clutch_basket: '',
-    input_shaft: '',
-    shift_fork: ''
+  newFuel = {
+    air_cleaner: '',
+    throttle_sensor: '',
+    fuel_injectors: '',
+    fuel_pump: '',
+    fuel_filter: ''
   };
   nextId = 1;
 
-  addgear()
+  addfuel()
   {
-    const gear: gear = {
-      ...this.newGear,
+    const fuel: Fuel = {
+      ...this.newFuel,
       id: this.nextId++,
       createdDate: new Date()
     };
-    this.gears.push(gear);
-    this.newGear = {relaeseBearing: '',driven_disc: '',clutch_basket: '',input_shaft: '',shift_fork: ''};
+    this.fuels.push(fuel);
+    this.newFuel = {air_cleaner: '',throttle_sensor: '',fuel_injectors: '',fuel_pump: '',fuel_filter: ''};
   }
 
-  updategear(gearId: number, newRelaeseBearing: string, newDrivenDisc: string, newClutch_basket: string, newInputShaft: string, newShiftFork: string)
+  updatefuel(fuelId: number, new_air_cleaner: string, newThrottleSensor: string, new_fuel_injectors: string, new_fuel_pump: string, new_fuel_filter: string)
   {
-    let gear = this.gears.find(e => e.id == gearId);
-    if(gear)
+    let fuel = this.fuels.find(e => e.id == fuelId);
+    if(fuel)
     {
-      gear.relaeseBearing = newRelaeseBearing;
-      gear.driven_disc = newDrivenDisc;
-      gear.clutch_basket = newClutch_basket;
-      gear.input_shaft = newInputShaft;
-      gear.shift_fork = newShiftFork;
-      gear.createdDate = new Date();
+      fuel.air_cleaner = new_air_cleaner;
+      fuel.throttle_sensor = newThrottleSensor;
+      fuel.fuel_injectors = new_fuel_injectors;
+      fuel.fuel_pump = new_fuel_pump;
+      fuel.fuel_filter = new_fuel_filter;
+      fuel.createdDate = new Date();
     }
   }
 }
