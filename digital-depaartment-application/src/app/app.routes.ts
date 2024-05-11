@@ -5,6 +5,6 @@ import { FuelModuleComponent } from './fuel-module/fuel-module.component';
 
 export const routes: Routes = [
     { path: '', component: EngineModuleComponent , title: 'Engine' },
-    { path: 'gear', component: GearModuleComponent, title: 'Gear Box'},
+    { path: 'gear', component: GearModuleComponent, title: 'Gearbox'},
     { path: 'fuel', component: FuelModuleComponent, title: 'Fuel System'},
 ];
