@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
-interface gear {
+export interface gear {
   id: number;
   relaeseBearing: string;
   driven_disc: string;
@@ -33,6 +33,24 @@ export class GearModuleComponent {
   };
   nextId = 1;
 
+  ngOnInit() {
+    this.loadGears();
+  }
+
+  loadGears() {
+    const storedGears = localStorage.getItem('gears');
+    if (storedGears) {
+      this.gears = JSON.parse(storedGears);
+      if (this.gears.length > 0) {
+        this.nextId = this.gears[this.gears.length - 1].id + 1;
+      }
+    }
+  }
+
+  saveGears() {
+    localStorage.setItem('gears', JSON.stringify(this.gears));
+  }
+
   addgear()
   {
     const gear: gear = {
@@ -41,7 +59,8 @@ export class GearModuleComponent {
       createdDate: new Date()
     };
     this.gears.push(gear);
-    this.newGear = {relaeseBearing: '',driven_disc: '',clutch_basket: '',input_shaft: '',shift_fork: ''};
+    this.saveGears();
+    this.resetNewGear();
   }
 
   updategear(gearId: number, newRelaeseBearing: string, newDrivenDisc: string, newClutch_basket: string, newInputShaft: string, newShiftFork: string)
@@ -56,5 +75,10 @@ export class GearModuleComponent {
       gear.shift_fork = newShiftFork;
       gear.createdDate = new Date();
     }
+    this.saveGears();
+  }
+
+  resetNewGear() {
+    this.newGear = { relaeseBearing: '', driven_disc: '', clutch_basket: '', input_shaft: '', shift_fork: '' };
   }
 }

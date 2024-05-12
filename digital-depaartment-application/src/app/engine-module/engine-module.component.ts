@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
-interface Engine {
+export interface Engine {
   id: number;
   power: string;
   max_engine_speed: string;
@@ -33,6 +33,24 @@ export class EngineModuleComponent {
   };
   nextId = 1;
 
+  ngOnInit() {
+    this.loadEngines();
+  }
+
+  loadEngines() {
+    const storedEngines = localStorage.getItem('engines');
+    if (storedEngines) {
+      this.engines = JSON.parse(storedEngines);
+      if (this.engines.length > 0) {
+        this.nextId = this.engines[this.engines.length - 1].id + 1;
+      }
+    }
+  }
+
+  saveEngines() {
+    localStorage.setItem('engines', JSON.stringify(this.engines));
+  }
+
   addEngine()
   {
     const engine: Engine = {
@@ -41,6 +59,7 @@ export class EngineModuleComponent {
       createdDate: new Date()
     };
     this.engines.push(engine);
+    this.saveEngines();
     this.newEngine = {power: '',max_engine_speed: '',emission_standart: '',stroke: '',boost_pressure: ''};
   }
 
@@ -56,5 +75,6 @@ export class EngineModuleComponent {
       engine.boost_pressure = newBoostPresssure;
       engine.createdDate = new Date();
     }
+    this.saveEngines();
   }
 }
