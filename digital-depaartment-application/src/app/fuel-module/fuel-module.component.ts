@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
-interface Fuel {
+export interface Fuel {
   id: number;
   air_cleaner: string;
   throttle_sensor: string;
@@ -33,6 +33,24 @@ export class FuelModuleComponent {
   };
   nextId = 1;
 
+  ngOnInit() {
+    this.loadFuels();
+  }
+
+  loadFuels() {
+    const storedFuels = localStorage.getItem('fuels');
+    if (storedFuels) {
+      this.fuels = JSON.parse(storedFuels);
+      if (this.fuels.length > 0) {
+        this.nextId = this.fuels[this.fuels.length - 1].id + 1;
+      }
+    }
+  }
+
+  saveFuels() {
+    localStorage.setItem('fuels', JSON.stringify(this.fuels));
+  }
+
   addfuel()
   {
     const fuel: Fuel = {
@@ -41,6 +59,7 @@ export class FuelModuleComponent {
       createdDate: new Date()
     };
     this.fuels.push(fuel);
+    this.saveFuels();
     this.newFuel = {air_cleaner: '',throttle_sensor: '',fuel_injectors: '',fuel_pump: '',fuel_filter: ''};
   }
 
@@ -56,5 +75,6 @@ export class FuelModuleComponent {
       fuel.fuel_filter = new_fuel_filter;
       fuel.createdDate = new Date();
     }
+    this.saveFuels();
   }
 }
