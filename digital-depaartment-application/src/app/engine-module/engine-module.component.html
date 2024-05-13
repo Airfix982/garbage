@@ -48,11 +48,13 @@
                     <th class="text-wrap" style="width: 18%;">Stroke</th>
                     <th class="text-wrap" style="width: 18%;">Boost pressure</th>
                     <th style="width: 10%;">Changed</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let engine of engines">
-                    <td>
+                    <!-- <td>
                         <input type="text" [(ngModel)]="engine.power" class="form-control"/>
                         <button class="btn btn-secondary btn-sm mt-1" (click)="updateEngine(engine.id, engine.power, engine.max_engine_speed, engine.emission_standart, engine.stroke, engine.boost_pressure)">Save</button>
                     </td>
@@ -67,8 +69,35 @@
                     </td>
                     <td>
                         <input type="text" [(ngModel)]="engine.boost_pressure" class="form-control"/>
-                    </td>
+                    </td> 
                     <td>{{ engine.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
+                -->
+                <td *ngIf="!engine.editing">{{ engine.power }}</td>
+                <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.power" class="form-control"/></td>
+
+                <td *ngIf="!engine.editing">{{ engine.max_engine_speed }}</td>
+                <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.max_engine_speed" class="form-control"/></td>
+
+                <td *ngIf="!engine.editing">{{ engine.emission_standart }}</td>
+                <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.emission_standart" class="form-control"/></td>
+
+                <td *ngIf="!engine.editing">{{ engine.stroke }}</td>
+                <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.stroke" class="form-control"/></td>
+
+                <td *ngIf="!engine.editing">{{ engine.boost_pressure }}</td>
+                <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.boost_pressure" class="form-control"/></td>
+
+                    <td>
+                        {{ engine.createdDate | date:'dd.MM.yyyy hh.mm' }}
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm mt-1" *ngIf="!engine.editing" (click)="toggleEdit(engine)">Edit</button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm mt-1" *ngIf="engine.editing" (click)="saveChanges(engine)">Save</button>
+
+                    </td>
                 </tr>
             </tbody>
         </table>
