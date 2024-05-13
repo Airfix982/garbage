@@ -77,4 +77,8 @@ export class FuelModuleComponent {
     }
     this.saveFuels();
   }
+  deleteFuel(fuelId: number) {
+    this.fuels = this.fuels.filter(gear => gear.id !== fuelId);
+    this.saveFuels();
+  }
 }
