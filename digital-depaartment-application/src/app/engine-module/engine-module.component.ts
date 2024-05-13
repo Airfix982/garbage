@@ -10,6 +10,7 @@ export interface Engine {
   stroke: string;
   boost_pressure: string;
   createdDate: Date;
+  editing?: boolean;
 }
 
 @Component({
@@ -75,6 +76,21 @@ export class EngineModuleComponent {
       engine.boost_pressure = newBoostPresssure;
       engine.createdDate = new Date();
     }
+    this.saveEngines();
+  }
+  toggleEdit(engine: Engine) {
+    engine.editing = !engine.editing;
+  }
+  
+  saveChanges(engine: Engine) {
+    if(engine.editing) {
+      engine.createdDate = new Date();
+      this.saveEngines();
+    }
+    engine.editing = false; 
+  }
+  deleteEngine(engineId: number) {
+    this.engines = this.engines.filter(engine => engine.id !== engineId);
     this.saveEngines();
   }
 }
