@@ -1,35 +1,35 @@
 <div class="container mt-4">
     <div class="mb-3">
-        <h2>Engine</h2>
+        <h2 appItalicText>Engine</h2>
         <form #form="ngForm">
             <div class="row">
                 <div class="col-md-2">
-                    <label for="power" class="form-label">Power</label>
+                    <label for="power" class="form-label" appItalicText appBoldText>Power</label>
                     <input type="text" class="form-control" id="power" [(ngModel)]="newEngine.power" #power="ngModel"
                         name="power" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="max_engine_speed" class="form-label">Max. engine speed</label>
+                    <label for="max_engine_speed" class="form-label" appItalicText>Max. engine speed</label>
                     <input type="text" class="form-control" id="max_engine_speed" [(ngModel)]="newEngine.max_engine_speed" #max_engine_speed="ngModel"
                         name="max_engine_speed" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="emission_standart" class="form-label">Emission standart</label>
+                    <label for="emission_standart" class="form-label" appItalicText appBoldText>Emission standart</label>
                     <input type="text" class="form-control" id="emission_standart" [(ngModel)]="newEngine.emission_standart" #emission_standart="ngModel"
                         name="emission_standart" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="stroke" class="form-label">Stroke</label>
+                    <label for="stroke" class="form-label" appItalicText>Stroke</label>
                     <input type="text" class="form-control" id="stroke" [(ngModel)]="newEngine.stroke" #stroke="ngModel"
                         name="stroke" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="boost_pressure" class="form-label">Boost pressure</label>
+                    <label for="boost_pressure" class="form-label" appItalicText appBoldText>Boost pressure</label>
                     <input type="text" class="form-control" id="boost_pressure" [(ngModel)]="newEngine.boost_pressure" #boost_pressure="ngModel"
                         name="boost_pressure" required>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-primary mt-3" [disabled]="form.invalid" (click)="addEngine()">Add</button>
+                    <button type="button" class="btn btn-primary mt-4 add-button" [disabled]="form.invalid" (click)="addEngine()">Add</button>
                 </div>
             </div>
         </form>

@@ -1,35 +1,35 @@
 <div class="container mt-4">
     <div class="mb-3">
-        <h2>Gearbox</h2>
+        <h2 appItalicText>Gearbox</h2>
         <form #form="ngForm">
             <div class="row">
                 <div class="col-md-2">
-                    <label for="relaeseBearing" class="form-label">Relaese bearing</label>
+                    <label for="relaeseBearing" class="form-label" appItalicText appBoldText>Relaese bearing</label>
                     <input type="text" class="form-control" id="relaeseBearing" [(ngModel)]="newGear.relaeseBearing" #relaeseBearing="ngModel"
                         name="relaeseBearing" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="driven_disc" class="form-label">Driven disc</label>
+                    <label for="driven_disc" class="form-label" appItalicText>Driven disc</label>
                     <input type="text" class="form-control" id="driven_disc" [(ngModel)]="newGear.driven_disc" #driven_disc="ngModel"
                         name="driven_disc" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="clutch_basket" class="form-label">Clutch basket</label>
+                    <label for="clutch_basket" class="form-label" appItalicText>Clutch basket</label>
                     <input type="text" class="form-control" id="clutch_basket" [(ngModel)]="newGear.clutch_basket" #clutch_basket="ngModel"
                         name="clutch_basket" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="input_shaft" class="form-label">Input shaft</label>
+                    <label for="input_shaft" class="form-label" appItalicText>Input shaft</label>
                     <input type="text" class="form-control" id="input_shaft" [(ngModel)]="newGear.input_shaft" #input_shaft="ngModel"
                         name="input_shaft" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="shift_fork" class="form-label">Shift fork</label>
+                    <label for="shift_fork" class="form-label" appItalicText appBoldText>Shift fork</label>
                     <input type="text" class="form-control" id="shift_fork" [(ngModel)]="newGear.shift_fork" #shift_fork="ngModel"
                         name="shift_fork" required>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-primary mt-3" [disabled]="form.invalid" (click)="addgear()">Add</button>
+                    <button type="button" class="btn btn-primary mt-4 add-button" [disabled]="form.invalid" (click)="addgear()">Add</button>
                 </div>
             </div>
         </form>
