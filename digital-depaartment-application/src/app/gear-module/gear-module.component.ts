@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ItalicTextDirective } from '../directives/italic-text.directive';
+import { BoldTextDirective } from '../directives/bold-text.directive';
 
 export interface gear {
   id: number;
@@ -16,7 +17,7 @@ export interface gear {
 @Component({
   selector: 'app-gear-module',
   standalone: true,
-  imports: [FormsModule, CommonModule, ItalicTextDirective],
+  imports: [FormsModule, CommonModule, ItalicTextDirective, BoldTextDirective],
   templateUrl: './gear-module.component.html',
   styleUrl: './gear-module.component.css'
 })

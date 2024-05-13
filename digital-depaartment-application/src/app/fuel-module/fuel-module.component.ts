@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ItalicTextDirective } from '../directives/italic-text.directive';
+import { BoldTextDirective } from '../directives/bold-text.directive';
 
 export interface Fuel {
   id: number;
@@ -16,7 +17,7 @@ export interface Fuel {
 @Component({
   selector: 'app-fuel-module',
   standalone: true,
-  imports: [FormsModule, CommonModule, ItalicTextDirective],
+  imports: [FormsModule, CommonModule, ItalicTextDirective, BoldTextDirective],
   templateUrl: './fuel-module.component.html',
   styleUrl: './fuel-module.component.css'
 })
