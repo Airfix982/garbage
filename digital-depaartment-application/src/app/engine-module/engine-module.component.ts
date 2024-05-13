@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ItalicTextDirective } from '../directives/italic-text.directive';
 
 export interface Engine {
   id: number;
@@ -15,7 +16,7 @@ export interface Engine {
 @Component({
   selector: 'app-engine-module',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ItalicTextDirective],
   templateUrl: './engine-module.component.html',
   styleUrl: './engine-module.component.css'
 })
