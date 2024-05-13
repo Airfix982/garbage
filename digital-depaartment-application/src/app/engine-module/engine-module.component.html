@@ -50,6 +50,7 @@
                     <th style="width: 10%;">Changed</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -80,6 +81,9 @@
                     <td>
                         <button class="btn btn-secondary btn-sm mt-1" *ngIf="engine.editing" (click)="saveChanges(engine)">Save</button>
 
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm mt-1" (click)="deleteEngine(engine.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
