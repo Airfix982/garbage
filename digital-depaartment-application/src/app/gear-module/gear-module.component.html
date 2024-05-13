@@ -39,7 +39,7 @@
 
     <div *ngIf="gears.length > 0">
         <h3>gears List</h3>
-        <table class="table">
+        <table class="table text-white">
             <thead>
                 <tr>
                     <th class="text-wrap" style="width: 18%;">Relaese bearing</th>
@@ -48,6 +48,7 @@
                     <th class="text-wrap" style="width: 18%;">Input shaft</th>
                     <th class="text-wrap" style="width: 18%;">Shift fork</th>
                     <th style="width: 10%;">Changed</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -69,6 +70,9 @@
                         <input type="text" [(ngModel)]="gear.shift_fork" class="form-control"/>
                     </td>
                     <td>{{ gear.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm mt-1" (click)="deleteGear(gear.id)">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
