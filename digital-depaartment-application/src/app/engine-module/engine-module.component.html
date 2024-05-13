@@ -54,24 +54,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let engine of engines">
-                    <!-- <td>
-                        <input type="text" [(ngModel)]="engine.power" class="form-control"/>
-                        <button class="btn btn-secondary btn-sm mt-1" (click)="updateEngine(engine.id, engine.power, engine.max_engine_speed, engine.emission_standart, engine.stroke, engine.boost_pressure)">Save</button>
-                    </td>
-                    <td>
-                        <input type="text" [(ngModel)]="engine.max_engine_speed" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="text" [(ngModel)]="engine.emission_standart" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="text" [(ngModel)]="engine.stroke" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="text" [(ngModel)]="engine.boost_pressure" class="form-control"/>
-                    </td> 
-                    <td>{{ engine.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
-                -->
+
                 <td *ngIf="!engine.editing">{{ engine.power }}</td>
                 <td *ngIf="engine.editing"><input type="text" [(ngModel)]="engine.power" class="form-control"/></td>
 
