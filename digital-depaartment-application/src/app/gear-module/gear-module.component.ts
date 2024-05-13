@@ -81,4 +81,8 @@ export class GearModuleComponent {
   resetNewGear() {
     this.newGear = { relaeseBearing: '', driven_disc: '', clutch_basket: '', input_shaft: '', shift_fork: '' };
   }
+  deleteGear(gearId: number) {
+    this.gears = this.gears.filter(gear => gear.id !== gearId);
+    this.saveGears();
+  }
 }
