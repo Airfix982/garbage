@@ -84,9 +84,9 @@ export class EngineModuleComponent {
   
   saveChanges(engine: Engine) {
     if(engine.editing) {
-      engine.createdDate = new Date(); // Обновляем дату изменения
+      engine.createdDate = new Date();
       this.saveEngines();
     }
-    engine.editing = false; // Выход из режима редактирования
+    engine.editing = false; 
   }
 }
