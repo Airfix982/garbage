@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { ItalicTextDirective } from '../directives/italic-text.directive';
 
 export interface Fuel {
   id: number;
@@ -15,10 +16,11 @@ export interface Fuel {
 @Component({
   selector: 'app-fuel-module',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ItalicTextDirective],
   templateUrl: './fuel-module.component.html',
   styleUrl: './fuel-module.component.css'
 })
+
 export class FuelModuleComponent {
   @ViewChild('form')
   form!: NgForm;
