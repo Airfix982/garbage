@@ -12,6 +12,7 @@ export interface gear {
   input_shaft: string;
   shift_fork: string;
   createdDate: Date;
+  editing?: boolean;
 }
 
 @Component({
@@ -82,6 +83,17 @@ export class GearModuleComponent {
 
   resetNewGear() {
     this.newGear = { relaeseBearing: '', driven_disc: '', clutch_basket: '', input_shaft: '', shift_fork: '' };
+  }
+  toggleEdit(gear: gear) {
+    gear.editing = !gear.editing;
+  }
+  
+  saveChanges(gear: gear) {
+    if(gear.editing) {
+      gear.createdDate = new Date();
+      this.saveGears();
+    }
+    gear.editing = false; 
   }
   deleteGear(gearId: number) {
     this.gears = this.gears.filter(gear => gear.id !== gearId);
