@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ItalicTextDirective } from '../directives/italic-text.directive';
-import { BoldTextDirective } from '../directives/bold-text.directive';
 
 export interface Fuel {
   id: number;
@@ -12,16 +10,16 @@ export interface Fuel {
   fuel_pump: string;
   fuel_filter: string;
   createdDate: Date;
+  editing?: boolean;
 }
 
 @Component({
   selector: 'app-fuel-module',
   standalone: true,
-  imports: [FormsModule, CommonModule, ItalicTextDirective, BoldTextDirective],
+  imports: [FormsModule, CommonModule],
   templateUrl: './fuel-module.component.html',
   styleUrl: './fuel-module.component.css'
 })
-
 export class FuelModuleComponent {
   @ViewChild('form')
   form!: NgForm;
@@ -80,8 +78,19 @@ export class FuelModuleComponent {
     }
     this.saveFuels();
   }
+  toggleEdit(fuel: Fuel) {
+    fuel.editing = !fuel.editing;
+  }
+  
+  saveChanges(fuel: Fuel) {
+    if(fuel.editing) {
+      fuel.createdDate = new Date();
+      this.saveFuels();
+    }
+    fuel.editing = false; 
+  }
   deleteFuel(fuelId: number) {
-    this.fuels = this.fuels.filter(gear => gear.id !== fuelId);
+    this.fuels = this.fuels.filter(fuel => fuel.id !== fuelId);
     this.saveFuels();
   }
 }

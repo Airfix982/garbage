@@ -1,35 +1,36 @@
 <div class="container mt-4">
     <div class="mb-3">
-        <h2 appItalicText>Fuel system</h2>
+        <h2>Fuel system</h2>
         <form #form="ngForm">
             <div class="row">
                 <div class="col-md-2">
-                    <label for="air_cleaner" class="form-label" appItalicText>Air cleaner</label>
+                    <label for="air_cleaner" class="form-label">Air cleaner</label>
                     <input type="text" class="form-control" id="air_cleaner" [(ngModel)]="newFuel.air_cleaner" #air_cleaner="ngModel"
                         name="air_cleaner" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="throttle_sensor" class="form-label" appItalicText appBoldText>Throttle sensor</label>
+                    <label for="throttle_sensor" class="form-label">Throttle sensor</label>
                     <input type="text" class="form-control" id="throttle_sensor" [(ngModel)]="newFuel.throttle_sensor" #throttle_sensor="ngModel"
                         name="throttle_sensor" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="fuel_injectors" class="form-label" appItalicText>Fuel injectors</label>
+                    <label for="fuel_injectors" class="form-label">Fuel injectors</label>
                     <input type="text" class="form-control" id="fuel_injectors" [(ngModel)]="newFuel.fuel_injectors" #fuel_injectors="ngModel"
                         name="fuel_injectors" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="fuel_pump" class="form-label" appItalicText appBoldText>Fuel pump</label>
+                    <label for="fuel_pump" class="form-label">Fuel pump</label>
                     <input type="text" class="form-control" id="fuel_pump" [(ngModel)]="newFuel.fuel_pump" #fuel_pump="ngModel"
                         name="fuel_pump" required>
                 </div>
                 <div class="col-md-2">
-                    <label for="fuel_filter" class="form-label" appItalicText>Fuel filter</label>
+                    <label for="fuel_filter" class="form-label">Fuel filter</label>
                     <input type="text" class="form-control" id="fuel_filter" [(ngModel)]="newFuel.fuel_filter" #fuel_filter="ngModel"
                         name="fuel_filter" required>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-primary mt-4 add-button" [disabled]="form.invalid" (click)="addfuel()">Add</button>
+                    <button type="button" class="btn btn-primary mt-3 add-button" [disabled]="form.invalid" (click)="addfuel()">Add</button>
+                    <img class="img img-pos" src="../../assets/fire-extinguisher.png">
                 </div>
             </div>
         </form>
@@ -49,27 +50,40 @@
                     <th class="text-wrap" style="width: 18%;">Fuel filter</th>
                     <th style="width: 10%;">Changed</th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let fuel of fuels">
+                                       
+
+                    <td *ngIf="!fuel.editing">{{ fuel.air_cleaner }}</td>
+                <td *ngIf="fuel.editing"><input type="text" [(ngModel)]="fuel.air_cleaner" class="form-control"/></td>
+
+                <td *ngIf="!fuel.editing">{{ fuel.throttle_sensor }}</td>
+                <td *ngIf="fuel.editing"><input type="text" [(ngModel)]="fuel.throttle_sensor" class="form-control"/></td>
+
+                <td *ngIf="!fuel.editing">{{ fuel.fuel_injectors }}</td>
+                <td *ngIf="fuel.editing"><input type="text" [(ngModel)]="fuel.fuel_injectors" class="form-control"/></td>
+
+                <td *ngIf="!fuel.editing">{{ fuel.fuel_pump }}</td>
+                <td *ngIf="fuel.editing"><input type="text" [(ngModel)]="fuel.fuel_pump" class="form-control"/></td>
+
+                <td *ngIf="!fuel.editing">{{ fuel.fuel_filter }}</td>
+                <td *ngIf="fuel.editing"><input type="text" [(ngModel)]="fuel.fuel_filter" class="form-control"/></td>
+
                     <td>
-                        <input type="text" [(ngModel)]="fuel.air_cleaner" class="form-control"/>
-                        <button class="btn btn-secondary btn-sm mt-1" (click)="updatefuel(fuel.id, fuel.air_cleaner, fuel.throttle_sensor, fuel.fuel_injectors, fuel.fuel_pump, fuel.fuel_filter)">Save</button>
+                        {{ fuel.createdDate | date:'dd.MM.yyyy hh.mm' }}
                     </td>
                     <td>
-                        <input type="text" [(ngModel)]="fuel.throttle_sensor" class="form-control"/>
+                        <button class="btn btn-secondary btn-sm mt-1" *ngIf="!fuel.editing" (click)="toggleEdit(fuel)">Edit</button>
+
                     </td>
                     <td>
-                        <input type="text" [(ngModel)]="fuel.fuel_injectors" class="form-control"/>
+                        <button class="btn btn-secondary btn-sm mt-1" *ngIf="fuel.editing" (click)="saveChanges(fuel)">Save</button>
+
                     </td>
-                    <td>
-                        <input type="text" [(ngModel)]="fuel.fuel_pump" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="text" [(ngModel)]="fuel.fuel_filter" class="form-control"/>
-                    </td>
-                    <td>{{ fuel.createdDate | date:'dd.MM.yyyy hh.mm' }}</td>
                     <td>
                         <button class="btn btn-danger btn-sm mt-1" (click)="deleteFuel(fuel.id)">Delete</button>
                     </td>
